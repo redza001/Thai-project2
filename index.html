@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ใบความรู้: การอ่านเชิงวิพากษ์</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Sarabun', sans-serif;
+            line-height: 1.6;
+            background: white;
+            color: #2c3e50;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            page-break-after: always;
+        }
+        
+        .page:last-child {
+            page-break-after: avoid;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header h2 {
+            color: #3498db;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .definition-box {
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .definition-box p {
+            font-size: 16px;
+            text-align: justify;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+        
+        .importance-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .importance-item {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .importance-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .number-circle {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+        
+        .importance-content {
+            flex: 1;
+        }
+        
+        .importance-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        
+        .importance-desc {
+            color: #5d6d7e;
+            font-size: 14px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        
+        .process-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .process-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .process-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .process-number {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .process-title {
+            font-weight: 600;
+            color: #2c3e50;
+            display: inline;
+            font-size: 16px;
+        }
+        
+        .process-desc {
+            margin-top: 8px;
+            color: #5d6d7e;
+            font-size: 14px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        
+        .characteristics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .characteristic-item {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .characteristic-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .characteristic-text {
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.4;
+            text-align: justify;
+        }
+        
+        .examples-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .example-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        
+        .example-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .example-title {
+            font-weight: 600;
+            color: #27ae60;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        
+        .example-desc {
+            color: #5d6d7e;
+            font-size: 14px;
+            text-align: justify;
+            line-height: 1.5;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeeba);
+            border: 1px solid #ffeaa7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .highlight-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #856404;
+            line-height: 1.5;
+        }
+        
+        @media print {
+            body { 
+                margin: 0;
+                padding: 0;
+            }
+            .page {
+                width: 100%;
+                min-height: 100vh;
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- หน้าที่ 1 -->
+    <div class="page">
+        <div class="header">
+            <h1>ใบความรู้</h1>
+            <h2>การอ่านเชิงวิพากษ์</h2>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ความหมายของการอ่านเชิงวิพากษ์</div>
+            <div class="definition-box">
+                <p><strong>การอ่านเชิงวิพากษ์ (Critical Reading)</strong> หมายถึง กระบวนการอ่านที่ผู้อ่านไม่ได้เพียงแต่รับสารอย่างตรงไปตรงมา หากแต่ใช้ความคิดวิเคราะห์ ไตร่ตรอง และตั้งคำถามต่อสิ่งที่กำลังอ่านอยู่ เพื่อแสวงหาความหมายที่แท้จริง ความถูกต้อง ความน่าเชื่อถือ ตลอดจนคุณค่าและข้อจำกัดของข้อความนั้น ๆ</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ความสำคัญของการอ่านเชิงวิพากษ์</div>
+            <div class="importance-list">
+                <div class="importance-item">
+                    <div class="number-circle">1</div>
+                    <div class="importance-content">
+                        <div class="importance-title">พัฒนาความคิดอย่างมีเหตุผล</div>
+                        <div class="importance-desc">การอ่านเชิงวิพากษ์เปิดโอกาสให้ผู้อ่านได้คิด วิเคราะห์ และแยกแยะข้อเท็จจริงออกจากความคิดเห็นหรืออคติ</div>
+                    </div>
+                </div>
+                
+                <div class="importance-item">
+                    <div class="number-circle">2</div>
+                    <div class="importance-content">
+                        <div class="importance-title">เสริมสร้างภูมิคุ้มกันทางปัญญา</div>
+                        <div class="importance-desc">เมื่อผู้อ่านสามารถตรวจสอบความน่าเชื่อถือของแหล่งข้อมูลได้ จะช่วยลดความเสี่ยงในการถูกชักจูงหรือหลงเชื่อข่าวสารที่ไม่ถูกต้อง</div>
+                    </div>
+                </div>
+                
+                <div class="importance-item">
+                    <div class="number-circle">3</div>
+                    <div class="importance-content">
+                        <div class="importance-title">เพิ่มพูนทักษะการเรียนรู้</div>
+                        <div class="importance-desc">การอ่านลักษณะนี้ช่วยให้ผู้อ่านเข้าใจสาระสำคัญอย่างลึกซึ้งและนำไปเชื่อมโยงกับความรู้เดิมได้ดียิ่งขึ้น</div>
+                    </div>
+                </div>
+                
+                <div class="importance-item">
+                    <div class="number-circle">4</div>
+                    <div class="importance-content">
+                        <div class
